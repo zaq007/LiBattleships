@@ -64,3 +64,25 @@
         text-overflow: ellipsis;
     }
 }
+
+.gameField {
+    display: grid;
+    grid-template-columns: repeat(10, 32px);
+    grid-template-rows: repeat(10, 32px);
+    grid-gap: 1px;
+}
+
+.gameField--cell {
+    box-shadow: 0 0 0 1px black;
+    cursor: pointer;
+}
+
+.gameField--cell--selected {
+    background-color: red;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px black;
+}
+
+.gameField--cell:hover, .gameField--cell--selected:hover {
+    background-color: grey;
+}
