@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import * as LoginStore from '../store/Login';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
+import { Field } from '../models/Field';
 
 //type LoginProps =
 //    LoginStore.LoginState
@@ -12,13 +13,13 @@ import { connect } from 'react-redux';
 type CellProps = {
     x: number,
     y: number,
-    states: Array<Array<Number>>,
+    field: Field,
     clickHandler?: Function
 };
 
 export default class GameCell extends React.Component<CellProps, {}> {
     getCss() {
-        return this.props.states[this.props.x][this.props.y] ? 'gameField--cell--selected' : 'gameField--cell';
+        return this.props.field.getState(this.props.x, this.props.y) ? 'gameField--cell--selected' : 'gameField--cell';
     }
 
     onClick() {
@@ -30,6 +31,7 @@ export default class GameCell extends React.Component<CellProps, {}> {
     }
 
     public render() {
+        
         return <div className={this.getCss()} onClick={ this.onClick.bind(this) }></div>;
     }
 }

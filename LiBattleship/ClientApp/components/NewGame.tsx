@@ -11,9 +11,11 @@ type NewGameProps =
     & RouteComponentProps<{}>;
 
 class NewGame extends React.Component<NewGameProps, {}> {
+
     render() {
+        console.log(this.props.newGameMap )
         return <div>
-            <GameField map={this.props.newGameMap} />
+            <GameField field={ this.props.newGameMap } />
             </div>;
     }
 }

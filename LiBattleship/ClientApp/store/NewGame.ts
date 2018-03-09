@@ -1,10 +1,10 @@
 ﻿import { fetch, addTask } from 'domain-task';
 import { Action, Reducer, ActionCreator } from 'redux';
 import { AppThunkAction } from './';
-import { FieldChecker } from '../helpers/FieldCheck';
+import { Field } from '../models/Field';
 
 export interface NewGameState {
-    newGameMap: Array<Array<number>>;
+    newGameMap: Field;
 }
 
 interface NewGameCreatedAction {
@@ -24,7 +24,7 @@ export const actionCreators = {
 };
 
 
-const unloadedState: NewGameState = { newGameMap: FieldChecker.getEmptyField() };
+const unloadedState: NewGameState = { newGameMap: new Field() };
 
 export const reducer: Reducer<NewGameState> = (state: NewGameState, incomingAction: Action) => {
     const action = incomingAction as KnownAction;
@@ -36,6 +36,6 @@ export const reducer: Reducer<NewGameState> = (state: NewGameState, incomingActi
         default:
             const exhaustiveCheck: never = action;
     }
-
+    if (state) console.log(state.newGameMap as Field);
     return state || unloadedState;
 };
