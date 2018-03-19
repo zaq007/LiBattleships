@@ -13,7 +13,7 @@ type NewGameProps =
 class NewGame extends React.Component<NewGameProps, {}> {
     render() {
         return <div>
-            <GameField map={this.props.newGameMap} />
+            <GameField field={this.props.newGameMap} />
             </div>;
     }
 }

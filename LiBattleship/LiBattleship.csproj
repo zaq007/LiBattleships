@@ -17,25 +17,32 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\models\**" />
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="ClientApp\models\**" />
+    <None Remove="ClientApp\models\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\Game.tsx" />
     <None Remove="ClientApp\components\GameCell.tsx" />
     <None Remove="ClientApp\components\GameField.tsx" />
     <None Remove="ClientApp\components\Login.tsx" />
     <None Remove="ClientApp\components\NewGame.tsx" />
     <None Remove="ClientApp\helpers\FieldCheck.ts" />
+    <None Remove="ClientApp\store\Game.ts" />
     <None Remove="ClientApp\store\Login.ts" />
     <None Remove="ClientApp\store\NewGame.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\Game.tsx" />
     <TypeScriptCompile Include="ClientApp\components\GameCell.tsx" />
     <TypeScriptCompile Include="ClientApp\components\GameField.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Login.tsx" />
     <TypeScriptCompile Include="ClientApp\components\NewGame.tsx" />
     <TypeScriptCompile Include="ClientApp\helpers\FieldCheck.ts" />
+    <TypeScriptCompile Include="ClientApp\store\Game.ts" />
     <TypeScriptCompile Include="ClientApp\store\NewGame.ts" />
     <TypeScriptCompile Include="ClientApp\store\Login.ts" />
   </ItemGroup>

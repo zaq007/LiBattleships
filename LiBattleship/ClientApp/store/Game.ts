@@ -20,7 +20,7 @@ interface GotDataAction {
 type KnownAction = MakeShootAction | GotDataAction;
 
 export const actionCreators = {
-    makeShoot: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
+    makeShoot: (x: number, y: number): AppThunkAction<KnownAction> => (dispatch, getState) => {
         dispatch({ type: 'MAKE_SHOOT' });
     }
 };

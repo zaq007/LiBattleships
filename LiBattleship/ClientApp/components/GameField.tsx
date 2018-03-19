@@ -11,19 +11,23 @@ import * as FieldCheck from '../helpers/FieldCheck';
 //    & RouteComponentProps<{}>;
 
 type GameFieldProps = {
-    map: Array<Array<number>>
+    field: Array<Array<number>>;
+    readonly?: boolean;
+    onClick?: Function;
 }
 
 export default class GameField extends React.Component<GameFieldProps, {}> {
     checker: FieldCheck.FieldChecker;
     map: Array<Array<number>>;
     ships: any;
+    readonly: boolean;
 
     constructor(props: GameFieldProps) {
         super(props);
-        this.map = props.map;
+        this.map = props.field;
         this.checker = new FieldCheck.FieldChecker(this.map);
-        this.ships = { '1': 0, '2':0, '3':0, '4':0 };
+        this.ships = { '1': 0, '2': 0, '3': 0, '4': 0 };
+        this.readonly = !!this.props.readonly;
     }
 
     public render() {
@@ -36,7 +40,7 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
     }
 
     cellClickHandler(x: number, y: number): boolean {
-        if (this.map[x][y] == 0 && !this.isValidMove(x, y)) return false;
+        if (this.readonly || this.map[x][y] == 0 && !this.isValidMove(x, y)) return false;
         let nearestPoints = this.getNearestPoints(x, y);
 
         if (this.map[x][y] == 0) {
@@ -51,7 +55,7 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
             .forEach((ship) => this.ships[ship]++);
         }
        
-        console.log(this.ships);
+        if (this.props.onClick) this.props.onClick(x, y);
         return true;
     }
 
