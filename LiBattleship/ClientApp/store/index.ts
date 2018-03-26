@@ -1,11 +1,14 @@
 import * as Login from './Login';
 import * as NewGame from './NewGame';
 import * as Game from './Game';
+import * as SignalR from './SignalR';
+
 // The top-level state object
 export interface ApplicationState {
     login: Login.LoginState;
     newGame: NewGame.NewGameState;
     game: Game.GameState;
+    signalR: SignalR.SignalRState;
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
@@ -15,6 +18,7 @@ export const reducers = {
     login: Login.reducer,
     newGame: NewGame.reducer,
     game: Game.reducer,
+    signalR: SignalR.reducer,
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are

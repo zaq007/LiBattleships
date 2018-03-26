@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Login from './Login';
+import SignalR from './SignalR';
 
 export class NavMenu extends React.Component<{}, {}> {
     public render() {
@@ -27,6 +28,7 @@ export class NavMenu extends React.Component<{}, {}> {
                             </NavLink>
                         </li>
                     </ul>
+                    <SignalR />
                     <Login />
                         </div>
                   </div>
