@@ -4,7 +4,7 @@ import * as SignalRStore from '../store/SignalR';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
 import GameField from './GameField';
-import { HubConnection } from '@aspnet/signalr';
+import { HubConnection, HubConnectionBuilder, JsonHubProtocol, HttpTransportType } from '@aspnet/signalr';
 
 interface ComponentParams {
     hub: string;
@@ -16,10 +16,9 @@ type SignalRProps =
     & ComponentParams;
 
 class SignalR extends React.Component<SignalRProps, {}> {
-    connection: HubConnection;
+    connection: HubConnection = new HubConnectionBuilder().withUrl("http://localhost:4761/hubs/battleships").build();
 
     componentWillMount() {
-        this.connection = new HubConnection("http://localhost:61930/hubs/battleships");
         this.connection.on('setCount', this.props.setStatus);
         this.startConnection();
         this.connection.onclose((e) => {

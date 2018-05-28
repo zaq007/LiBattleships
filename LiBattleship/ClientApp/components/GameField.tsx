@@ -33,7 +33,7 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
     public render() {
         var cells = [];
         for (let i = 0; i < 100; i++) {
-            cells.push(<GameCell x={i % 10} y={Math.trunc(i / 10)} key={i} clickHandler={this.cellClickHandler.bind(this)} states={ this.map } />);
+            cells.push(<GameCell x={i % 10} y={Math.trunc(i / 10)} key={i} clickHandler={this.cellClickHandler.bind(this)} states={this.map} />);
         }
 
         return <div className="gameField">{cells}</div>;
@@ -52,9 +52,9 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
             this.ships[this.map[x][y]]--;
             this.setPointWeight(x, y, 0);
             this.getNearestPoints(x, y).map((point) => this.map[x + point.dx][y + point.dy])
-            .forEach((ship) => this.ships[ship]++);
+                .forEach((ship) => this.ships[ship]++);
         }
-       
+
         if (this.props.onClick) this.props.onClick(x, y);
         return true;
     }
@@ -65,7 +65,7 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
         else {
             this.getNearestPoints(x, y).forEach((point) => {
                 if (point.dx != 0 || point.dy != 0) this.setRegionWeight(x + point.dx, y + point.dy, this.getRegionWeight(x + point.dx, y + point.dy));
-            });            
+            });
         }
     }
 
@@ -109,10 +109,10 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
         let result = [];
         if (this.map[x][y] > 0) { result.push({ dx: 0, dy: 0 }) }
         if (x > 0 && this.map[x - 1][y] > 0) { result.push({ dx: -1, dy: 0 }) }
-        if (y < this.map.length - 1 && this.map[x][y + 1] > 0) { result.push({ dx: 0, dy: 1 }) } 
-        if (y > 0 && this.map[x][y - 1] > 0) { result.push({ dx: 0, dy: -1 }) } 
+        if (y < this.map.length - 1 && this.map[x][y + 1] > 0) { result.push({ dx: 0, dy: 1 }) }
+        if (y > 0 && this.map[x][y - 1] > 0) { result.push({ dx: 0, dy: -1 }) }
         if (x < this.map.length - 1 && this.map[x + 1][y] > 0) { result.push({ dx: 1, dy: 0 }) }
-        return result; 
+        return result;
     }
 
     isValidMove(i: number, j: number): boolean {
@@ -123,9 +123,9 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
         if (j < this.map.length - 1 && i < this.map.length - 1 && this.map[i + 1][j + 1]) return false;
         let probableShip = this.getNearestPoints(i, j).map((point) => this.map[i + point.dx][j + point.dy]).reduce((prev, curr, i, array) => curr + prev, 0) + 1;
         if (probableShip > 4) return false;
-        if (this.ships[probableShip] + 1 + probableShip > 5) return false;
+        //if (this.ships[probableShip] + 1 + probableShip > 5) return false;
         return true;
-    } 
+    }
 }
 
 //export default connect(

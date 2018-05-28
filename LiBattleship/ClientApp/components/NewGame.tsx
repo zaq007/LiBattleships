@@ -14,7 +14,7 @@ class NewGame extends React.Component<NewGameProps, {}> {
     render() {
         return <div>
             <GameField field={this.props.newGameMap} />
-            </div>;
+        </div>;
     }
 }
 
