@@ -3,6 +3,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import * as LoginStore from '../store/Login';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
+import { fetch } from 'domain-task';
+import { AuthService } from '../services/AuthService';
 
 type LoginProps =
     LoginStore.LoginState
@@ -10,8 +12,15 @@ type LoginProps =
     & RouteComponentProps<{}>;
 
 class Login extends React.Component<LoginProps, {}> {
+    public componentDidMount() {
+        AuthService.getToken().then(token => {
+            localStorage.setItem("authToken", token);
+            this.props.receivedToken(token);
+        });
+    }
+
     public render() {
-        return this.props.token ? this.getLoggedUser() : this.getLoginForm();
+        return this.props.token && !this.props.token.IsGuest ? this.getLoggedUser() : this.getLoginForm();
     }
 
     private getLoggedUser() {

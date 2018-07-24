@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using LiBattleship.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -36,8 +37,9 @@ namespace LiBattleship.Controllers
             var registerResult = await _userManager.CreateAsync(user, password);
             if (registerResult.Succeeded)
             {
-                var principal = await _signInManager.ClaimsFactory.CreateAsync(user);
-                return Ok(BuildToken(principal.Identity as ClaimsIdentity));
+                await _userManager.AddClaimAsync(user, Claims.BuildGuestClaim(false));
+                var claimsPrincipal = await _signInManager.ClaimsFactory.CreateAsync(user);
+                return Ok(BuildToken(claimsPrincipal.Identity as ClaimsIdentity));
             }
             return BadRequest(registerResult.Errors);
         }
@@ -50,17 +52,20 @@ namespace LiBattleship.Controllers
             {
                 if (await _userManager.CheckPasswordAsync(user, password))
                 {
-                    return Ok();
+                    await _signInManager.SignInAsync(user, false);
+                    var claimsPrincipal = await _signInManager.ClaimsFactory.CreateAsync(user);
+                    return Ok(BuildToken(claimsPrincipal.Identity as ClaimsIdentity));
                 }
             }
             return NotFound();
         }
 
-        [Route("Test")]
-        [Authorize]
-        public IActionResult Test()
+        [Route("Guest")]
+        public IActionResult GetGuestToket()
         {
-            return Ok(User.Identity);
+            List<Claim> claims = new List<Claim>() { Claims.BuildGuestClaim(), Claims.BuildUserIdClaim() };
+            var guest = new ClaimsIdentity(claims);
+            return Ok(BuildToken(guest));
         }
 
         private string BuildToken(ClaimsIdentity claims)
@@ -70,15 +75,8 @@ namespace LiBattleship.Controllers
 
             var handler = new JwtSecurityTokenHandler();
 
-            var token = handler.CreateToken(new SecurityTokenDescriptor()
-            {
-                Audience = _config["Jwt:Issuer"],
-                SigningCredentials = creds,
-                Expires = DateTime.Now.AddMinutes(30),
-                Issuer = _config["Jwt:Issuer"],
-                Subject = claims
-            });
-
+            //var token = new JwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Issuer"], claims, signingCredentials: creds);
+            var token = handler.CreateJwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Issuer"], claims, signingCredentials: creds, expires: DateTime.Now.AddYears(1));
             return handler.WriteToken(token);
         }
     }

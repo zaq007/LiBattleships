@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "devDependencies": {
     "@types/history": "4.6.0",
+    "@types/jwt-decode": "^2.2.1",
     "@types/react": "15.0.35",
     "@types/react-dom": "15.5.1",
     "@types/react-hot-loader": "3.0.3",
@@ -39,10 +40,12 @@
     "url-loader": "0.5.9",
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",
-    "webpack-merge": "4.1.0"
+    "webpack-merge": "4.1.0",
+    "tslib": "1.9.2"
   },
   "dependencies": {
     "@types/bootstrap": "^3.3.38",
-    "@aspnet/signalr": "^1.0.0-rc1-update1"
+    "@aspnet/signalr": "1.0.2",
+    "jwt-decode": "^2.2.0"
   }
 }

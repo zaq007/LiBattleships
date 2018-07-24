@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-rc1-final" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +34,9 @@
     <None Remove="ClientApp\components\NewGame.tsx" />
     <None Remove="ClientApp\components\SignalR.tsx" />
     <None Remove="ClientApp\helpers\FieldCheck.ts" />
+    <None Remove="ClientApp\helpers\JwtToken.ts" />
+    <None Remove="ClientApp\services\AuthService.ts" />
+    <None Remove="ClientApp\services\BaseService.ts" />
     <None Remove="ClientApp\store\Game.ts" />
     <None Remove="ClientApp\store\Login.ts" />
     <None Remove="ClientApp\store\NewGame.ts" />
@@ -48,6 +51,9 @@
     <TypeScriptCompile Include="ClientApp\components\NewGame.tsx" />
     <TypeScriptCompile Include="ClientApp\components\SignalR.tsx" />
     <TypeScriptCompile Include="ClientApp\helpers\FieldCheck.ts" />
+    <TypeScriptCompile Include="ClientApp\helpers\JwtToken.ts" />
+    <TypeScriptCompile Include="ClientApp\services\AuthService.ts" />
+    <TypeScriptCompile Include="ClientApp\services\BaseService.ts" />
     <TypeScriptCompile Include="ClientApp\store\Game.ts" />
     <TypeScriptCompile Include="ClientApp\store\NewGame.ts" />
     <TypeScriptCompile Include="ClientApp\store\Login.ts" />

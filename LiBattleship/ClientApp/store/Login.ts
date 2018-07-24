@@ -1,9 +1,11 @@
 ﻿import { fetch, addTask } from 'domain-task';
 import { Action, Reducer, ActionCreator } from 'redux';
 import { AppThunkAction } from './';
+import { JwtToken } from '../helpers/JwtToken';
+import { BaseService } from '../services/BaseService';
 
 export interface LoginState {
-    token?: string | null;
+    token?: JwtToken;
 }
 
 interface RequestTokenAction {
@@ -23,17 +25,23 @@ export const actionCreators = {
     sendCredentials: (login: string, password: string): AppThunkAction<KnownAction> => (dispatch, getState) => {
         console.log(login, password);
         dispatch({ type: 'RECEIVE_TOKEN', token: login + '_TEST_' + password });
+    },
+    receivedToken: (token: string): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        dispatch({ type: 'RECEIVE_TOKEN', token });
     }
 };
 
 
-const unloadedState: LoginState = { token: null };
+const unloadedState: LoginState = {};
 
 export const reducer: Reducer<LoginState> = (state: LoginState, incomingAction: Action) => {
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'RECEIVE_TOKEN':
-            return Object.assign({}, state, { token: action.token });
+            BaseService.setToken(action.token);
+            return Object.assign({}, state, {
+                token: new JwtToken(action.token)
+            });
         case 'REQUEST_TOKEN':
             return Object.assign({}, state);
         default:

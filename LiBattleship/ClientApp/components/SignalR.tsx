@@ -1,10 +1,9 @@
 ﻿import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import * as SignalRStore from '../store/SignalR';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
-import GameField from './GameField';
-import { HubConnection, HubConnectionBuilder, JsonHubProtocol, HttpTransportType } from '@aspnet/signalr';
+import { HubConnection, HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
+import { AuthService } from '../services/AuthService';
 
 interface ComponentParams {
     hub: string;
@@ -16,7 +15,10 @@ type SignalRProps =
     & ComponentParams;
 
 class SignalR extends React.Component<SignalRProps, {}> {
-    connection: HubConnection = new HubConnectionBuilder().withUrl("http://localhost:4761/hubs/battleships").build();
+    connection: HubConnection = new HubConnectionBuilder().withUrl("http://localhost:4761/hubs/battleships", {
+        transport: HttpTransportType.LongPolling,
+        accessTokenFactory: () => AuthService.getToken(),
+    }).build();
 
     componentWillMount() {
         this.connection.on('setCount', this.props.setStatus);
@@ -25,7 +27,6 @@ class SignalR extends React.Component<SignalRProps, {}> {
             this.props.onDisconnected(e);
             this.startConnection();
         });
-
     }
 
     render() {

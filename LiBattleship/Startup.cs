@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Protocols;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 
 namespace LiBattleship
@@ -43,7 +45,6 @@ namespace LiBattleship
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
             })
         .AddJwtBearer(options =>
         {
@@ -55,7 +56,7 @@ namespace LiBattleship
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
             };
         });
-            services.AddSignalR();
+            services.AddSignalR(x => x.EnableDetailedErrors = true);
             services.AddMvc();
         }
 
