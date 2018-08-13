@@ -2,7 +2,8 @@
 
 export enum HttpMethod {
     GET = "GET",
-    POST = "POST"
+    POST = "POST",
+    PUT = "PUT",
 }
 
 export class BaseService {
@@ -17,8 +18,9 @@ export class BaseService {
             method,
             headers: {
                 "Authorization": "Bearer " + this.token,
+                "Content-Type": "application/json; charset=utf-8",
             },
-            body: data
+            body: JSON.stringify(data),
         });
     }
 

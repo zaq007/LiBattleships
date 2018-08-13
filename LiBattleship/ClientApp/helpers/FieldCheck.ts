@@ -5,29 +5,19 @@
 
 
 export class FieldChecker {
-    private field: Array<Array<number>>;
-
-    constructor(field: Array<Array<number>>) {
-        this.field = field;
-    }
-
-    public check(): FieldCheckResult {
-        
-        let ships : any = { '1': 0, '2':0, '3':0, '4':0 };
-        let isValid = true;
-        //let shipsNumber = 0;
-        //for (let i = 0; i < this.field.length; i++) {
-        //    for (let j = 0; j < this.field.length; j++) {
-        //        if (!temp[i][j] && this.field[i][j]) {
-        //            temp[i][j] = true;
-        //            ships[this.field[i][j]]++;
-        //            if (isValid && i > 0 && j > 0 && this.field[i - 1][j - 1]) isValid = false;
-        //            if (isValid && i > 0 && j < this.field.length - 1 && this.field[i - 1][j + 1]) isValid = false;
-        //            if (isValid && j > 0 && i < this.field.length - 1 && this.field[i + 1][j - 1]) isValid = false;
-        //            if (isValid && j < this.field.length - 1 && i < this.field.length - 1 && this.field[i + 1][j + 1]) isValid = false;
-        //        }
-        //    }
-        //}
+    public static check(field: number[][]): FieldCheckResult {
+        const ships : any = { '1': 0, '2':0, '3':0, '4':0 };
+        for (let i = 0; i < field.length; i++) {
+            for (let j = 0; j < field.length; j++) {
+                if (field[i][j] > 0) {
+                    ships[field[i][j]]++;
+                }
+            }
+        }
+        for (let ship in ships) {
+            ships[ship] /= parseInt(ship, 10);
+        }
+        const isValid = ships['1'] === 4 && ships['2'] === 3 && ships['3'] === 2 && ships['4'] === 1;
         return { isValid, ships };
     }
 

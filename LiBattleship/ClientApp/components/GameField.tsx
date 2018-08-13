@@ -17,7 +17,6 @@ type GameFieldProps = {
 }
 
 export default class GameField extends React.Component<GameFieldProps, {}> {
-    checker: FieldCheck.FieldChecker;
     map: Array<Array<number>>;
     ships: any;
     readonly: boolean;
@@ -25,7 +24,6 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
     constructor(props: GameFieldProps) {
         super(props);
         this.map = props.field;
-        this.checker = new FieldCheck.FieldChecker(this.map);
         this.ships = { '1': 0, '2': 0, '3': 0, '4': 0 };
         this.readonly = !!this.props.readonly;
     }

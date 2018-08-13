@@ -6,7 +6,6 @@ import { FieldChecker } from '../helpers/FieldCheck';
 export interface GameState {
     currentGameMap: Array<Array<number>>;
     enemyGameMap: Array<Array<number>>;
-
 }
 
 interface MakeShootAction {

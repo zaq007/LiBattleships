@@ -23,10 +23,6 @@ class SignalR extends React.Component<SignalRProps, {}> {
     componentWillMount() {
         this.connection.on('setCount', this.props.setStatus);
         this.startConnection();
-        this.connection.onclose((e) => {
-            this.props.onDisconnected(e);
-            this.startConnection();
-        });
     }
 
     render() {

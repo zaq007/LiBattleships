@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LiBattleship.Query.Infrastructure.Context
 {
-    class QueryContext : BattleshipContext
+    public class QueryContext : BattleshipContext
     {
     }
 }

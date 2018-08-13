@@ -20,24 +20,25 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
-    <Compile Remove="ClientApp\models\**" />
     <Content Remove="ClientApp\**" />
-    <EmbeddedResource Remove="ClientApp\models\**" />
-    <None Remove="ClientApp\models\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\components\Game.tsx" />
     <None Remove="ClientApp\components\GameCell.tsx" />
     <None Remove="ClientApp\components\GameField.tsx" />
+    <None Remove="ClientApp\components\GameList.tsx" />
     <None Remove="ClientApp\components\Login.tsx" />
     <None Remove="ClientApp\components\NewGame.tsx" />
     <None Remove="ClientApp\components\SignalR.tsx" />
     <None Remove="ClientApp\helpers\FieldCheck.ts" />
     <None Remove="ClientApp\helpers\JwtToken.ts" />
+    <None Remove="ClientApp\models\GameListModel.ts" />
     <None Remove="ClientApp\services\AuthService.ts" />
     <None Remove="ClientApp\services\BaseService.ts" />
+    <None Remove="ClientApp\services\GameService.ts" />
     <None Remove="ClientApp\store\Game.ts" />
+    <None Remove="ClientApp\store\GameList.ts" />
     <None Remove="ClientApp\store\Login.ts" />
     <None Remove="ClientApp\store\NewGame.ts" />
     <None Remove="ClientApp\store\SignalR.ts" />
@@ -47,13 +48,17 @@
     <TypeScriptCompile Include="ClientApp\components\Game.tsx" />
     <TypeScriptCompile Include="ClientApp\components\GameCell.tsx" />
     <TypeScriptCompile Include="ClientApp\components\GameField.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\GameList.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Login.tsx" />
     <TypeScriptCompile Include="ClientApp\components\NewGame.tsx" />
     <TypeScriptCompile Include="ClientApp\components\SignalR.tsx" />
     <TypeScriptCompile Include="ClientApp\helpers\FieldCheck.ts" />
     <TypeScriptCompile Include="ClientApp\helpers\JwtToken.ts" />
+    <TypeScriptCompile Include="ClientApp\models\GameListModel.ts" />
+    <TypeScriptCompile Include="ClientApp\services\GameService.ts" />
     <TypeScriptCompile Include="ClientApp\services\AuthService.ts" />
     <TypeScriptCompile Include="ClientApp\services\BaseService.ts" />
+    <TypeScriptCompile Include="ClientApp\store\GameList.ts" />
     <TypeScriptCompile Include="ClientApp\store\Game.ts" />
     <TypeScriptCompile Include="ClientApp\store\NewGame.ts" />
     <TypeScriptCompile Include="ClientApp\store\Login.ts" />

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LiBattleship.Shared.Infrastructure.Contexts
 {
-    class BattleshipContext : DbContext
+    public class BattleshipContext : DbContext
     {
     }
 }

@@ -16,7 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace LiBattleship.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Account")]
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
