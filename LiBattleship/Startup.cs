@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LiBattleship.Hubs;
 using LiBattleship.Identity;
+using LiBattleship.Matchmaking;
+using LiBattleship.Matchmaking.Infrastructure;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -68,6 +70,8 @@ namespace LiBattleship
         });
             services.AddSignalR(x => x.EnableDetailedErrors = true);
             services.AddMvc();
+
+            services.AddSingleton<IMatchmaking, Matchmaking.Infrastructure.Matchmaking>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,13 +5,17 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship", "LiBattleship\LiBattleship.csproj", "{8BCA2361-EB63-4BAA-8C4B-B57E9564B9C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Shared", "LiBattleship.Shared\LiBattleship.Shared.csproj", "{6149DFA0-A1BE-44E6-8073-AD16CB622EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Shared", "LiBattleship.Shared\LiBattleship.Shared.csproj", "{6149DFA0-A1BE-44E6-8073-AD16CB622EAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Query", "LiBattleship.Query\LiBattleship.Query.csproj", "{CBEC8BF7-3350-4C41-8A9F-A9F70AC9A197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Query", "LiBattleship.Query\LiBattleship.Query.csproj", "{CBEC8BF7-3350-4C41-8A9F-A9F70AC9A197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Query.Infrastructure", "LiBattleship.Query.Infrastructure\LiBattleship.Query.Infrastructure.csproj", "{A4C07CD6-B024-4A99-A959-D3FB07B8A8CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Query.Infrastructure", "LiBattleship.Query.Infrastructure\LiBattleship.Query.Infrastructure.csproj", "{A4C07CD6-B024-4A99-A959-D3FB07B8A8CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Shared.Infrastructure", "LiBattleship.Shared.Infrastructure\LiBattleship.Shared.Infrastructure.csproj", "{5C347A05-4EF3-4AFB-ACDF-467FB7C767F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Shared.Infrastructure", "LiBattleship.Shared.Infrastructure\LiBattleship.Shared.Infrastructure.csproj", "{5C347A05-4EF3-4AFB-ACDF-467FB7C767F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Matchmaking", "LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj", "{97B3DA27-3EB0-4002-9743-44FBCAD249AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Matchmaking.Infrastructure", "LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj", "{89DE95C6-797D-4376-9966-D9EC226DBB51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{5C347A05-4EF3-4AFB-ACDF-467FB7C767F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C347A05-4EF3-4AFB-ACDF-467FB7C767F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C347A05-4EF3-4AFB-ACDF-467FB7C767F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B3DA27-3EB0-4002-9743-44FBCAD249AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B3DA27-3EB0-4002-9743-44FBCAD249AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B3DA27-3EB0-4002-9743-44FBCAD249AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B3DA27-3EB0-4002-9743-44FBCAD249AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89DE95C6-797D-4376-9966-D9EC226DBB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DE95C6-797D-4376-9966-D9EC226DBB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DE95C6-797D-4376-9966-D9EC226DBB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DE95C6-797D-4376-9966-D9EC226DBB51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

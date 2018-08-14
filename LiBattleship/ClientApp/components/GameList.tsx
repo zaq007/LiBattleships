@@ -12,7 +12,7 @@ type GameListProps =
 class GameList extends React.Component<GameListProps, {}> {
     public render() {
         return <ul className="game-list">
-            { this.props.gameList.map( x => <li>{ x.creatorName }</li> ) }
+            {this.props.gameList.map(x => <li key={x.guid}>{x.creatorName}</li>)}
         </ul>;
     }
 }

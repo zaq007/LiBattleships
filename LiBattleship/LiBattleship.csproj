@@ -41,7 +41,13 @@
     <None Remove="ClientApp\store\GameList.ts" />
     <None Remove="ClientApp\store\Login.ts" />
     <None Remove="ClientApp\store\NewGame.ts" />
+    <None Remove="ClientApp\store\Router.ts" />
     <None Remove="ClientApp\store\SignalR.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj" />
+    <ProjectReference Include="..\LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,6 +68,7 @@
     <TypeScriptCompile Include="ClientApp\store\Game.ts" />
     <TypeScriptCompile Include="ClientApp\store\NewGame.ts" />
     <TypeScriptCompile Include="ClientApp\store\Login.ts" />
+    <TypeScriptCompile Include="ClientApp\store\Router.ts" />
     <TypeScriptCompile Include="ClientApp\store\SignalR.ts" />
   </ItemGroup>
 

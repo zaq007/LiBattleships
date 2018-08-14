@@ -31,17 +31,17 @@
     "react-dom": "15.6.1",
     "react-hot-loader": "3.0.0-beta.7",
     "react-redux": "5.0.5",
-    "react-router-dom": "4.1.1",
-    "react-router-redux": "5.0.0-alpha.6",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
     "redux": "3.7.1",
     "redux-thunk": "2.2.0",
     "style-loader": "0.18.2",
+    "tslib": "1.9.2",
     "typescript": "2.4.1",
     "url-loader": "0.5.9",
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",
-    "webpack-merge": "4.1.0",
-    "tslib": "1.9.2"
+    "webpack-merge": "4.1.0"
   },
   "dependencies": {
     "@types/bootstrap": "^3.3.38",

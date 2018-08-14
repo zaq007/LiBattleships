@@ -10,11 +10,6 @@ export interface SignalRState {
 
 interface ConnectedAction {
     type: 'CONNECTED';
-    send: Function;
-}
-
-interface GotDataAction {
-    type: 'GOT_DATA';
 }
 
 interface DisconnectedAction {
@@ -26,11 +21,11 @@ interface SetStatusAction {
     onlineCount: number;
 }
 
-type KnownAction = ConnectedAction | GotDataAction | DisconnectedAction | SetStatusAction;
+type KnownAction = ConnectedAction | DisconnectedAction | SetStatusAction;
 
 export const actionCreators = {
-    onConnected: (send: Function): AppThunkAction<KnownAction> => (dispatch, getState) => {
-        dispatch({ type: 'CONNECTED', send });
+    onConnected: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        dispatch({ type: 'CONNECTED' });
     },
     onDisconnected: (e?: Error): AppThunkAction<KnownAction> => (dispatch, getState) => {
         dispatch({ type: 'DISCONNECTED' });
@@ -47,11 +42,9 @@ export const reducer: Reducer<SignalRState> = (state: SignalRState, incomingActi
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'CONNECTED':
-            return Object.assign({}, state, { send: action.send, connected: true });
+            return Object.assign({}, state, { connected: true });
         case 'DISCONNECTED':
             return Object.assign({}, state, { connected: false });
-        case 'GOT_DATA':
-            return Object.assign({}, state);
         case 'SET_STATUS':
             return Object.assign({}, state, { onlineCount: action.onlineCount });
         default:
