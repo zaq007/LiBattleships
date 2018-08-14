@@ -55,6 +55,16 @@ namespace LiBattleship
                 ValidAudience = Configuration["Jwt:Issuer"],
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
             };
+            options.Events = new JwtBearerEvents();
+            options.Events.OnMessageReceived = (context) =>
+            {
+                if (context.HttpContext.WebSockets.IsWebSocketRequest && context.Request.Query.ContainsKey("access_token"))
+                {
+                    context.Token = context.Request.Query["access_token"];
+                }
+
+                return Task.CompletedTask;
+            };
         });
             services.AddSignalR(x => x.EnableDetailedErrors = true);
             services.AddMvc();
@@ -79,6 +89,7 @@ namespace LiBattleship
 
             app.UseStaticFiles();
 
+            app.UseWebSockets();
             app.UseAuthentication();
             app.UseSignalR((x) =>
             {

@@ -16,7 +16,6 @@ type SignalRProps =
 
 class SignalR extends React.Component<SignalRProps, {}> {
     connection: HubConnection = new HubConnectionBuilder().withUrl("http://localhost:4761/hubs/battleships", {
-        transport: HttpTransportType.LongPolling,
         accessTokenFactory: () => AuthService.getToken(),
     }).build();
 
