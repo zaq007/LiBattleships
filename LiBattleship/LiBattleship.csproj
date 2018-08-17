@@ -32,7 +32,7 @@
     <None Remove="ClientApp\components\Login.tsx" />
     <None Remove="ClientApp\components\NewGame.tsx" />
     <None Remove="ClientApp\components\SignalR.tsx" />
-    <None Remove="ClientApp\helpers\FieldCheck.ts" />
+    <None Remove="ClientApp\helpers\FieldHelper.ts" />
     <None Remove="ClientApp\helpers\JwtToken.ts" />
     <None Remove="ClientApp\models\GameListModel.ts" />
     <None Remove="ClientApp\services\AuthService.ts" />
@@ -62,7 +62,7 @@
     <TypeScriptCompile Include="ClientApp\components\JoinGame.tsx" />
     <TypeScriptCompile Include="ClientApp\components\NewGame.tsx" />
     <TypeScriptCompile Include="ClientApp\components\SignalR.tsx" />
-    <TypeScriptCompile Include="ClientApp\helpers\FieldCheck.ts" />
+    <TypeScriptCompile Include="ClientApp\helpers\FieldHelper.ts" />
     <TypeScriptCompile Include="ClientApp\helpers\JwtToken.ts" />
     <TypeScriptCompile Include="ClientApp\models\GameListModel.ts" />
     <TypeScriptCompile Include="ClientApp\services\GameService.ts" />

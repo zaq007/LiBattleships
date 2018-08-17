@@ -1,7 +1,6 @@
 ﻿import { fetch, addTask } from 'domain-task';
 import { Action, Reducer, ActionCreator } from 'redux';
 import { AppThunkAction } from './';
-import { FieldChecker } from '../helpers/FieldCheck';
 import { GameListModel } from '../models/GameListModel';
 
 export interface GameListState {

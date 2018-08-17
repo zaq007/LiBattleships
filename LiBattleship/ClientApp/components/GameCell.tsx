@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import * as LoginStore from '../store/Login';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
+import { FieldHelper } from '../helpers/FieldHelper';
 
 //type LoginProps =
 //    LoginStore.LoginState
@@ -12,13 +13,16 @@ import { connect } from 'react-redux';
 type CellProps = {
     x: number,
     y: number,
-    states: Array<Array<Number>>,
+    states: number[][],
     clickHandler?: Function
 };
 
 export default class GameCell extends React.Component<CellProps, {}> {
     getCss() {
-        return this.props.states[this.props.x][this.props.y] ? 'gameField--cell--selected' : 'gameField--cell';
+        const classes = ['gameField--cell'];
+        const cellValue = this.props.states[this.props.x][this.props.y];
+        if (FieldHelper.getShipSize(cellValue) > 0) classes.push('gameField--cell--selected');
+        return classes.join(' ');
     }
 
     onClick() {

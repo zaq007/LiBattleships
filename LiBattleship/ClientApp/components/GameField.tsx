@@ -4,7 +4,7 @@ import * as LoginStore from '../store/Login';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
 import GameCell from './GameCell';
-import * as FieldCheck from '../helpers/FieldCheck';
+import * as FieldHelper from '../helpers/FieldHelper';
 //type LoginProps =
 //    LoginStore.LoginState
 //    & typeof LoginStore.actionCreators

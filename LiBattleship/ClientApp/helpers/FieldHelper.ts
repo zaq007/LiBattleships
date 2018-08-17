@@ -4,7 +4,7 @@
 }
 
 
-export class FieldChecker {
+export class FieldHelper {
     public static check(field: number[][]): FieldCheckResult {
         const ships : any = { '1': 0, '2':0, '3':0, '4':0 };
         for (let i = 0; i < field.length; i++) {
@@ -27,5 +27,13 @@ export class FieldChecker {
             temp.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
         }
         return temp;
+    }
+
+    public static getShipSize(cell: number) {
+        return cell & 7;
+    }
+
+    public static getCellState(cell: number): boolean {
+        return (cell & 8) > 0;
     }
 }

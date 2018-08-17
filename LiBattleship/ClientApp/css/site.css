@@ -79,10 +79,8 @@
 
 .gameField--cell--selected {
     background-color: red;
-    cursor: pointer;
-    box-shadow: 0 0 0 1px black;
 }
 
-.gameField--cell:hover, .gameField--cell--selected:hover {
+.gameField--cell:hover {
     background-color: grey;
 }

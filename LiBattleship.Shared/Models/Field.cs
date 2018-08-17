@@ -170,7 +170,7 @@ namespace LiBattleship.Shared.Models
 
         private bool IsValidMove(int i, int j)
         {
-            if (GetHitState(_inner[i - 1][j - 1])) return false;
+            if (GetHitState(_inner[i][j])) return false;
             if (i > 0 && j > 0 && GetShipState(_inner[i - 1][j - 1]) != ShipState.Unknown) return false;
             if (i > 0 && j < _inner.Length - 1 && GetShipState(_inner[i - 1][j + 1]) != ShipState.Unknown) return false;
             if (j > 0 && i < _inner.Length - 1 && GetShipState(_inner[i + 1][j - 1]) != ShipState.Unknown) return false;

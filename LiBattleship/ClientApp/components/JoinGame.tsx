@@ -7,7 +7,7 @@ import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
 import GameField from './GameField';
 import { GameService } from '../services/GameService';
-import { FieldChecker } from '../helpers/FieldCheck';
+import { FieldHelper } from '../helpers/FieldHelper';
 
 type JoinGameProps =
     NewGameStore.NewGameState
@@ -38,7 +38,7 @@ class JoinGame extends React.Component<JoinGameProps, JoinGameState> {
             .then((result) => this.props.gameCreated(result)).catch(() => this.props.history.push('/'));
     }
 
-    onFieldClick = () => { this.setState({ isValid: FieldChecker.check(this.props.newGameMap).isValid}) }
+    onFieldClick = () => { this.setState({ isValid: FieldHelper.check(this.props.newGameMap).isValid}) }
 }
 
 export default connect(

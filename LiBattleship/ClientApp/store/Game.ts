@@ -1,7 +1,7 @@
 ﻿import { fetch, addTask } from 'domain-task';
 import { Action, Reducer, ActionCreator } from 'redux';
 import { AppThunkAction } from './';
-import { FieldChecker } from '../helpers/FieldCheck';
+import { FieldHelper } from '../helpers/FieldHelper';
 import { push, RouterAction } from 'react-router-redux';
 
 export interface GameState {
@@ -33,7 +33,7 @@ export const actionCreators = {
 };
 
 
-const unloadedState: GameState = { currentGameMap: FieldChecker.getEmptyField(), enemyGameMap: FieldChecker.getEmptyField(), isMyTurn: false, currentGameId: '' };
+const unloadedState: GameState = { currentGameMap: FieldHelper.getEmptyField(), enemyGameMap: FieldHelper.getEmptyField(), isMyTurn: false, currentGameId: '' };
 
 export const reducer: Reducer<GameState> = (state: GameState, incomingAction: Action) => {
     const action = incomingAction as KnownAction;

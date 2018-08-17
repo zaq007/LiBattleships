@@ -1,7 +1,7 @@
 ﻿import { fetch, addTask } from 'domain-task';
 import { Action, Reducer, ActionCreator } from 'redux';
 import { AppThunkAction } from './';
-import { FieldChecker } from '../helpers/FieldCheck';
+import { FieldHelper } from '../helpers/FieldHelper';
 
 export interface NewGameState {
     newGameMap: Array<Array<number>>;
@@ -24,7 +24,7 @@ export const actionCreators = {
 };
 
 
-const unloadedState: NewGameState = { newGameMap: FieldChecker.getEmptyField() };
+const unloadedState: NewGameState = { newGameMap: FieldHelper.getEmptyField() };
 
 export const reducer: Reducer<NewGameState> = (state: NewGameState, incomingAction: Action) => {
     const action = incomingAction as KnownAction;
