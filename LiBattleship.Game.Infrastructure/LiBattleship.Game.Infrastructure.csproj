@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LiBattleship.Shared\LiBattleship.Shared.csproj" />
+    <ProjectReference Include="..\LiBattleship.Game\LiBattleship.Game.csproj" />
   </ItemGroup>
 
 </Project>

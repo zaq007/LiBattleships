@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj" />
+    <ProjectReference Include="..\LiBattleship.Shared\LiBattleship.Shared.csproj" />
   </ItemGroup>
 
 </Project>

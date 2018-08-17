@@ -17,6 +17,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Matchmaking", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Matchmaking.Infrastructure", "LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj", "{89DE95C6-797D-4376-9966-D9EC226DBB51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Game", "LiBattleship.Game\LiBattleship.Game.csproj", "{7810AB8D-084E-4D83-B435-54F95BBD7DC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Game.Infrastructure", "LiBattleship.Game.Infrastructure\LiBattleship.Game.Infrastructure.csproj", "{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Matchmaking", "Matchmaking", "{7B7E60E7-3198-47A7-B40B-CC912901C2EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameServer", "GameServer", "{9705711E-8BA0-4E04-924E-95A6F585AA00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +59,23 @@ Global
 		{89DE95C6-797D-4376-9966-D9EC226DBB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89DE95C6-797D-4376-9966-D9EC226DBB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89DE95C6-797D-4376-9966-D9EC226DBB51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7810AB8D-084E-4D83-B435-54F95BBD7DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7810AB8D-084E-4D83-B435-54F95BBD7DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7810AB8D-084E-4D83-B435-54F95BBD7DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7810AB8D-084E-4D83-B435-54F95BBD7DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97B3DA27-3EB0-4002-9743-44FBCAD249AE} = {7B7E60E7-3198-47A7-B40B-CC912901C2EA}
+		{89DE95C6-797D-4376-9966-D9EC226DBB51} = {7B7E60E7-3198-47A7-B40B-CC912901C2EA}
+		{7810AB8D-084E-4D83-B435-54F95BBD7DC7} = {9705711E-8BA0-4E04-924E-95A6F585AA00}
+		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336} = {9705711E-8BA0-4E04-924E-95A6F585AA00}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2FB2999E-4CB2-443D-BCD1-FCE96F3E4D57}

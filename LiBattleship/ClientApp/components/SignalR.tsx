@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import * as SignalRStore from '../store/SignalR';
 import * as GameListStore from '../store/GameList';
+import * as GameStore from '../store/Game';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
 import { HubConnection, HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
@@ -14,6 +15,7 @@ type SignalRProps =
     SignalRStore.SignalRState
     & typeof SignalRStore.actionCreators
     & typeof GameListStore.actionCreators
+    & typeof GameStore.actionCreators
     & ComponentParams;
 
 class SignalR extends React.Component<SignalRProps, {}> {
@@ -24,11 +26,12 @@ class SignalR extends React.Component<SignalRProps, {}> {
     componentWillMount() {
         this.connection.on('setCount', this.props.setStatus);
         this.connection.on('setGameList', this.props.setGameList);
+        this.connection.on('gameCreated', this.props.gameCreated);
+        this.connection.on('setGameState', this.props.setGameState);
         this.startConnection();
     }
 
     render() {
-        console.log(this.context)
         return <div>
             <span>{this.props.connected ? 'connected' : 'disconnected'}</span>
             <span hidden={!this.props.connected}>Online: {this.props.onlineCount}</span>
@@ -41,6 +44,6 @@ class SignalR extends React.Component<SignalRProps, {}> {
 }
 
 export default connect(
-    (state: ApplicationState) => state.signalR, // Selects which state properties are merged into the component's props
-    Object.assign({}, SignalRStore.actionCreators, GameListStore.actionCreators)                // Selects which action creators are merged into the component's props
+    (state: ApplicationState) => state.signalR,
+    Object.assign({}, SignalRStore.actionCreators, GameListStore.actionCreators, GameStore.actionCreators)
 )(SignalR);

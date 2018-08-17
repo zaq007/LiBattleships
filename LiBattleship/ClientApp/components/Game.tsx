@@ -4,6 +4,7 @@ import * as GameStore from '../store/Game';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
 import GameField from './GameField';
+import { GameService } from '../services/GameService';
 
 type GameProps =
     GameStore.GameState
@@ -14,12 +15,12 @@ class Game extends React.Component<GameProps, {}> {
     render() {
         return <div>
             <GameField field={this.props.currentGameMap} readonly={true} />
-            <GameField field={this.props.enemyGameMap} onClick={ this.onEnemyFieldClick.bind(this) } />
+            <GameField field={this.props.enemyGameMap} readonly={ !this.props.isMyTurn } onClick={this.onEnemyFieldClick.bind(this)} />
                 </div>;
     }
 
     onEnemyFieldClick(x: number, y: number) {
-        this.props.makeShoot(x, y);
+        GameService.MakeMove(this.props.currentGameId, x, y).then((state) => this.props.setGameState(state));
     }
 }
 

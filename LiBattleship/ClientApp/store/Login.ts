@@ -38,7 +38,6 @@ export const reducer: Reducer<LoginState> = (state: LoginState, incomingAction: 
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'RECEIVE_TOKEN':
-            BaseService.setToken(action.token);
             return Object.assign({}, state, {
                 token: new JwtToken(action.token)
             });

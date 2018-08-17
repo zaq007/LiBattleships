@@ -35,7 +35,7 @@ export const reducer: Reducer<GameListState> = (state: GameListState, incomingAc
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'SET_GAME_LIST':
-            return Object.assign(state, { gameList: action.gameList });
+            return Object.assign({}, state, { gameList: action.gameList });
         default:
             const exhaustiveCheck = action;
     }

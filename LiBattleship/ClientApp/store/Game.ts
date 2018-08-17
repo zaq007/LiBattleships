@@ -2,40 +2,44 @@
 import { Action, Reducer, ActionCreator } from 'redux';
 import { AppThunkAction } from './';
 import { FieldChecker } from '../helpers/FieldCheck';
+import { push, RouterAction } from 'react-router-redux';
 
 export interface GameState {
     currentGameMap: Array<Array<number>>;
     enemyGameMap: Array<Array<number>>;
+    isMyTurn: boolean;
+    currentGameId: string;
 }
 
-interface MakeShootAction {
-    type: 'MAKE_SHOOT';
+interface SetGameStateAction {
+    type: 'SET_GAME_STATE';
+    currentGameMap: Array<Array<number>>;
+    enemyGameMap: Array<Array<number>>;
+    isMyTurn: boolean;
+    currentGameId: string;
 }
 
-interface GotDataAction {
-    type: 'GOT_DATA';
-}
 
-type KnownAction = MakeShootAction | GotDataAction;
+type KnownAction = SetGameStateAction | RouterAction;
 
 export const actionCreators = {
-    makeShoot: (x: number, y: number): AppThunkAction<KnownAction> => (dispatch, getState) => {
-        dispatch({ type: 'MAKE_SHOOT' });
+    gameCreated: (state: any): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        dispatch(push(`/game/${state.id}`));
+        dispatch({ type: 'SET_GAME_STATE', currentGameMap: state.myMap, enemyGameMap: state.enemyMap, isMyTurn: state.isMyTurn, currentGameId: state.id } as SetGameStateAction);
+    },
+    setGameState: (state: any): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        dispatch({ type: 'SET_GAME_STATE', currentGameMap: state.myMap, enemyGameMap: state.enemyMap, isMyTurn: state.isMyTurn, currentGameId: state.id } as SetGameStateAction);
     }
 };
 
 
-const unloadedState: GameState = { currentGameMap: FieldChecker.getEmptyField(), enemyGameMap: FieldChecker.getEmptyField() };
+const unloadedState: GameState = { currentGameMap: FieldChecker.getEmptyField(), enemyGameMap: FieldChecker.getEmptyField(), isMyTurn: false, currentGameId: '' };
 
 export const reducer: Reducer<GameState> = (state: GameState, incomingAction: Action) => {
     const action = incomingAction as KnownAction;
     switch (action.type) {
-        case 'MAKE_SHOOT':
-            return Object.assign({}, state);
-        case 'GOT_DATA':
-            return Object.assign({}, state);
-        default:
-            const exhaustiveCheck: never = action;
+        case 'SET_GAME_STATE':
+            return Object.assign({}, state, action);
     }
 
     return state || unloadedState;

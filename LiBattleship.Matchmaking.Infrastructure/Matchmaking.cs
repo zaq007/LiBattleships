@@ -1,4 +1,4 @@
-﻿using LiBattleship.Matchmaking.Models;
+﻿using LiBattleship.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +32,14 @@ namespace LiBattleship.Matchmaking.Infrastructure
             return _matches.Where(x => x.JoinerMap == null);
         }
 
-        public bool JoinMatch(Guid match, Guid joiner, int[][] map)
+        public Match JoinMatch(Guid matchId, Guid joiner, int[][] map)
         {
-            throw new NotImplementedException();
+            var match = _matches.SingleOrDefault(x => x.Id == matchId);
+            if (match.Creator == joiner) return null;
+            match.Joiner = joiner;
+            match.JoinerMap = map;
+            _matches.Remove(match);
+            return match;
         }
     }
 }

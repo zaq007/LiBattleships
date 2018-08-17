@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LiBattleship.Matchmaking.Models
+namespace LiBattleship.Shared.Models
 {
     public class Match
     {

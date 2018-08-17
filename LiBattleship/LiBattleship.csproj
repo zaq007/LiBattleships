@@ -28,6 +28,7 @@
     <None Remove="ClientApp\components\GameCell.tsx" />
     <None Remove="ClientApp\components\GameField.tsx" />
     <None Remove="ClientApp\components\GameList.tsx" />
+    <None Remove="ClientApp\components\JoinGame.tsx" />
     <None Remove="ClientApp\components\Login.tsx" />
     <None Remove="ClientApp\components\NewGame.tsx" />
     <None Remove="ClientApp\components\SignalR.tsx" />
@@ -46,6 +47,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LiBattleship.Game.Infrastructure\LiBattleship.Game.Infrastructure.csproj" />
+    <ProjectReference Include="..\LiBattleship.Game\LiBattleship.Game.csproj" />
     <ProjectReference Include="..\LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj" />
     <ProjectReference Include="..\LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj" />
   </ItemGroup>
@@ -56,6 +59,7 @@
     <TypeScriptCompile Include="ClientApp\components\GameField.tsx" />
     <TypeScriptCompile Include="ClientApp\components\GameList.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Login.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\JoinGame.tsx" />
     <TypeScriptCompile Include="ClientApp\components\NewGame.tsx" />
     <TypeScriptCompile Include="ClientApp\components\SignalR.tsx" />
     <TypeScriptCompile Include="ClientApp\helpers\FieldCheck.ts" />

@@ -21,10 +21,10 @@ export class AuthService {
     }
 
     private static AuthAsGuest(){
-        return BaseService.fetch(HttpMethod.GET, '/api/Account/Guest');
+        return BaseService.fetchAnonymous(HttpMethod.GET, '/api/Account/Guest');
     }
 
     private static AuthAsUser(username: string, password: string){
-        return BaseService.fetch(HttpMethod.GET, '/api/Account/Guest');
+        return BaseService.fetchAnonymous(HttpMethod.GET, '/api/Account/Guest');
     }
 }

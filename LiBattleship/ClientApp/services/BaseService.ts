@@ -1,4 +1,5 @@
 ﻿import { fetch } from "domain-task";
+import { AuthService } from "./AuthService";
 
 export enum HttpMethod {
     GET = "GET",
@@ -7,22 +8,24 @@ export enum HttpMethod {
 }
 
 export class BaseService {
-    private static token: string | null;
-
-    public static setToken(token: string){
-        this.token = token;
+    public static fetch(method: string, url: string, data?: any): Promise<any> {
+        return AuthService.getToken().then((token: string) => fetch(url, {
+            method,
+            headers: {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify(data),
+        }));
     }
 
-    public static fetch(method: string, url: string, data?: any) {
+    public static fetchAnonymous(method: string, url: string, data?: any): Promise<any> {
         return fetch(url, {
             method,
             headers: {
-                "Authorization": "Bearer " + this.token,
                 "Content-Type": "application/json; charset=utf-8",
             },
             body: JSON.stringify(data),
         });
     }
-
-
 }

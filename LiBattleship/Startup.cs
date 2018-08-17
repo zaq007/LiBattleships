@@ -4,6 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LiBattleship.Game;
+using LiBattleship.Game.Infrastructure;
 using LiBattleship.Hubs;
 using LiBattleship.Identity;
 using LiBattleship.Matchmaking;
@@ -72,6 +74,7 @@ namespace LiBattleship
             services.AddMvc();
 
             services.AddSingleton<IMatchmaking, Matchmaking.Infrastructure.Matchmaking>();
+            services.AddSingleton<IGameServer, GameServer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
