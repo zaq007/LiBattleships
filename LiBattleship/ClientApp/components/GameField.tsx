@@ -38,15 +38,9 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
         let nearestPoints = this.getNearestPoints(x, y);
 
         if (this.props.field[x][y] == 0) {
-            nearestPoints.map((point) => this.props.field[x + point.dx][y + point.dy])
-                .forEach((ship) => this.ships[ship]--);
             this.setPointWeight(x, y, 1);
-            this.ships[this.props.field[x][y]]++;
         } else {
-            this.ships[this.props.field[x][y]]--;
             this.setPointWeight(x, y, 0);
-            this.getNearestPoints(x, y).map((point) => this.props.field[x + point.dx][y + point.dy])
-                .forEach((ship) => this.ships[ship]++);
         }
 
         if (this.props.onClick) this.props.onClick(x, y);
@@ -111,15 +105,20 @@ export default class GameField extends React.Component<GameFieldProps, {}> {
 
     isValidMove(i: number, j: number): boolean {
         let result = true;
-        if (i > 0 && j > 0 && this.props.field[i - 1][j - 1]) return false;
-        if (i > 0 && j < this.props.field.length - 1 && this.props.field[i - 1][j + 1]) return false;
-        if (j > 0 && i < this.props.field.length - 1 && this.props.field[i + 1][j - 1]) return false;
-        if (j < this.props.field.length - 1 && i < this.props.field.length - 1 && this.props.field[i + 1][j + 1]) return false;
-        let probableShip = this.getNearestPoints(i, j).map((point) => this.props.field[i + point.dx][j + point.dy]).reduce((prev, curr, i, array) => curr + prev, 0) + 1;
+        if (FieldHelper.FieldHelper.getCellState(this.props.field[i][j])) return false;
+        if (i > 0 && j > 0 && FieldHelper.FieldHelper.isShip(this.props.field[i - 1][j - 1])) return false;
+        if (i > 0 && j < this.props.field.length - 1 && FieldHelper.FieldHelper.isShip(this.props.field[i - 1][j + 1])) return false;
+        if (j > 0 && i < this.props.field.length - 1 && FieldHelper.FieldHelper.isShip(this.props.field[i + 1][j - 1])) return false;
+        if (j < this.props.field.length - 1 && i < this.props.field.length - 1 && FieldHelper.FieldHelper.isShip(this.props.field[i + 1][j + 1])) return false;
+        let probableShip = this.getNearestPoints(i, j)
+            .map((point) => FieldHelper.FieldHelper.getShipSize(this.props.field[i + point.dx][j + point.dy]))
+            .reduce((prev, curr, i, array) => curr + prev, 0) + 1;
         if (probableShip > 4) return false;
         //if (this.ships[probableShip] + 1 + probableShip > 5) return false;
         return true;
     }
+
+
 }
 
 //export default connect(

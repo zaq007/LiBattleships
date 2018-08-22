@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import * as LoginStore from '../store/Login';
 import { ApplicationState } from 'ClientApp/store';
 import { connect } from 'react-redux';
-import { FieldHelper } from '../helpers/FieldHelper';
+import { FieldHelper, ShipState } from '../helpers/FieldHelper';
 
 //type LoginProps =
 //    LoginStore.LoginState
@@ -19,9 +19,16 @@ type CellProps = {
 
 export default class GameCell extends React.Component<CellProps, {}> {
     getCss() {
-        const classes = ['gameField--cell'];
+        const classes = ['gameField-cell'];
         const cellValue = this.props.states[this.props.x][this.props.y];
-        if (FieldHelper.getShipSize(cellValue) > 0) classes.push('gameField--cell--selected');
+        const shipSize = FieldHelper.getShipSize(cellValue);
+        const cellState = FieldHelper.getCellState(cellValue);
+        const shipState = FieldHelper.getShipState(cellValue);
+
+        if (cellState || shipState === ShipState.Hitted) classes.push('gameField-cell__hitted');
+        if (shipState === ShipState.Killed) classes.push('gameField-cell__killed');
+        if (shipSize > 0 || shipState !== ShipState.Unknown) classes.push('gameField-cell__selected');
+
         return classes.join(' ');
     }
 

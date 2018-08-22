@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LiBattleship.Game.Models;
+using LiBattleship.Shared.Enums;
 using LiBattleship.Shared.Models;
 
 namespace LiBattleship.Game.Infrastructure
@@ -43,12 +44,13 @@ namespace LiBattleship.Game.Infrastructure
 
             if (game != null && ((game.Player1 == playerId && game.IsP1Turn) || (game.Player2 == playerId && !game.IsP1Turn)))
             {
-                bool result = false;
+                MoveResult result = MoveResult.IncorrectMove;
                 if (game.Player1 == playerId) result = game.Map2.MakeMove(x, y);
                 if (game.Player2 == playerId) result = game.Map1.MakeMove(x, y);
-                if (result)
+                if (result != MoveResult.IncorrectMove)
                 {
-                    game.IsP1Turn = !game.IsP1Turn;
+                    if(result != MoveResult.Hit) game.IsP1Turn = !game.IsP1Turn;
+                    if (result == MoveResult.GameFinished) game.IsFinished = true;
                     game.LastMoveTime = DateTime.Now;
                 }
             }

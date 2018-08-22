@@ -15,5 +15,6 @@ namespace LiBattleship.Game.Infrastructure.Models
         public bool IsP1Turn { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime LastMoveTime { get; set; }
+        public bool IsFinished { get; set; }
     }
 }

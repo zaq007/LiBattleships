@@ -3,6 +3,11 @@
     ships: any
 }
 
+export enum ShipState {
+    Unknown = 0,
+    Hitted = 16,
+    Killed = 32,
+}
 
 export class FieldHelper {
     public static check(field: number[][]): FieldCheckResult {
@@ -35,5 +40,13 @@ export class FieldHelper {
 
     public static getCellState(cell: number): boolean {
         return (cell & 8) > 0;
+    }
+
+    public static getShipState(cell: number): ShipState {
+        return cell & 48;
+    }
+
+    public static isShip(cell: number): boolean {
+        return this.getShipSize(cell) > 0 || this.getShipState(cell) === ShipState.Hitted;
     }
 }
