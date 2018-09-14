@@ -75,6 +75,9 @@ namespace LiBattleship.Shared.Models
             {
                 SetShipState(x, y, ShipState.Hitted);
                 CheckKilledAndSet(x, y);
+                if (IsShipCountValid(GetRawData(true))) {
+                    return MoveResult.GameFinished;
+                }
                 return MoveResult.Hit;
             }
             return MoveResult.NoHit;
@@ -146,6 +149,29 @@ namespace LiBattleship.Shared.Models
             if (j < _inner.Length - 1 && i < _inner.Length - 1 && GetShipState(_inner[i + 1][j + 1]) != ShipState.Unknown) return false;
             //var probableShip = this.getNearestPoints(i, j).Select((point) => _inner[i + point.dx][j + point.dy]).Sum() + 1;
             //if (probableShip > 4) return false;
+            return true;
+        }
+
+
+        private bool IsShipCountValid(int[][] field)
+        {
+            var ships = new Dictionary<int, int>() {
+                { 1, 0 },
+                { 2, 0 },
+                { 3, 0 },
+                { 4, 0 }
+            };
+
+            for (int i = 0; i < field.Length; i++) {
+                for (int j = 0; j < field[i].Length; j++) {
+                    var shipSize = GetShipSize(field[i][j]);
+                    if (shipSize > 0) ships[shipSize]++;
+                }
+            }
+            foreach (var value in ships) {
+                if (value.Value / value.Key != 5 - value.Key) return false;
+            }
+
             return true;
         }
     }

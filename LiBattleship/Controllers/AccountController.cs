@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
+using IdentityUser = Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>;
+
 namespace LiBattleship.Controllers
 {
     [Produces("application/json")]

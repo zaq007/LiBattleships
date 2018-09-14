@@ -10,6 +10,7 @@ using LiBattleship.Hubs;
 using LiBattleship.Identity;
 using LiBattleship.Matchmaking;
 using LiBattleship.Matchmaking.Infrastructure;
+using LiBattleship.Shared.Infrastructure.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -38,11 +39,15 @@ namespace LiBattleship
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEntityFrameworkInMemoryDatabase();
-            services.AddDbContext<IdentityDbContext>(options => options.UseInMemoryDatabase("BattleShipsDB"));
-            services.AddIdentity<IdentityUser, IdentityRole>((x =>
+            //services.AddEntityFrameworkInMemoryDatabase();
+            //services.AddEntityFrameworkSqlServer();
+            services.AddDbContext<BattleshipContext>(options => {
+                //options.UseInMemoryDatabase("BattleShipsDB");
+                options.UseSqlServer(Configuration.GetConnectionString("BattleshipsDb"));
+            });
+            services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>((x =>
             {
-            })).AddEntityFrameworkStores<IdentityDbContext>();
+            })).AddEntityFrameworkStores<BattleshipContext>();
 
             services.AddAuthentication(options =>
             {

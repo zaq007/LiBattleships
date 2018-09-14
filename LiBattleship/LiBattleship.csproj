@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
@@ -51,6 +51,7 @@
     <ProjectReference Include="..\LiBattleship.Game\LiBattleship.Game.csproj" />
     <ProjectReference Include="..\LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj" />
     <ProjectReference Include="..\LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj" />
+    <ProjectReference Include="..\LiBattleship.Shared.Infrastructure\LiBattleship.Shared.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
