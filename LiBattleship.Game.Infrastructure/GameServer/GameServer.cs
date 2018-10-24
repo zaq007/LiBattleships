@@ -21,8 +21,8 @@ namespace LiBattleship.Game.Infrastructure
             var game = new Models.Game()
             {
                 Id = match.Id,
-                Map1 = new Field(match.CreatorMap),
-                Map2 = new Field(match.JoinerMap),
+                Map1 = match.CreatorMap,
+                Map2 = match.JoinerMap,
                 Player1 = match.Creator,
                 Player2 = match.Joiner,
                 IsP1Turn = true,
@@ -50,7 +50,11 @@ namespace LiBattleship.Game.Infrastructure
                 if (result != MoveResult.IncorrectMove)
                 {
                     if(result != MoveResult.Hit) game.IsP1Turn = !game.IsP1Turn;
-                    if (result == MoveResult.GameFinished) game.IsFinished = true;
+                    if (result == MoveResult.GameFinished)
+                    {
+                        game.IsFinished = true;
+                        _games.Remove(game);
+                    }
                     game.LastMoveTime = DateTime.Now;
                 }
             }
@@ -67,7 +71,9 @@ namespace LiBattleship.Game.Infrastructure
                 Map1 = game.Map1,
                 Map2 = game.Map2,
                 Player1 = game.Player1,
-                Player2 = game.Player2
+                Player2 = game.Player2,
+                IsFinished = game.IsFinished,
+                LastMoveTime = game.LastMoveTime
             };
         }
     }

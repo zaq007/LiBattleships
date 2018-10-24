@@ -4,12 +4,16 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LiBattleship.Command.Infrastructure.Extensions;
 using LiBattleship.Game;
 using LiBattleship.Game.Infrastructure;
 using LiBattleship.Hubs;
 using LiBattleship.Identity;
 using LiBattleship.Matchmaking;
 using LiBattleship.Matchmaking.Infrastructure;
+using LiBattleship.Service.Infrastructure.Services;
+using LiBattleship.Service.Services;
+using LiBattleship.Services;
 using LiBattleship.Shared.Infrastructure.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,6 +21,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,8 +44,6 @@ namespace LiBattleship
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddEntityFrameworkInMemoryDatabase();
-            //services.AddEntityFrameworkSqlServer();
             services.AddDbContext<BattleshipContext>(options => {
                 //options.UseInMemoryDatabase("BattleShipsDB");
                 options.UseSqlServer(Configuration.GetConnectionString("BattleshipsDb"));
@@ -80,6 +83,10 @@ namespace LiBattleship
 
             services.AddSingleton<IMatchmaking, Matchmaking.Infrastructure.Matchmaking>();
             services.AddSingleton<IGameServer, GameServer>();
+            services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IGameService, GameService>();
+
+            services.AddCommandHandlers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,9 +6,7 @@ export class AuthService {
     public static getToken(){
         const token = localStorage.getItem("authToken");
         if(token) this.tokenPromise = Promise.resolve(token);
-        if(!this.tokenPromise) this.tokenPromise = this.Auth().then((data: Response) => {
-            return data.json();
-        });
+        if (!this.tokenPromise) this.tokenPromise = this.Auth();
         return this.tokenPromise; 
     }
 
@@ -24,7 +22,7 @@ export class AuthService {
         return BaseService.fetchAnonymous(HttpMethod.GET, '/api/Account/Guest');
     }
 
-    private static AuthAsUser(username: string, password: string){
-        return BaseService.fetchAnonymous(HttpMethod.GET, '/api/Account/Guest');
+    private static AuthAsUser(username: string, password: string) {
+        return BaseService.fetchAnonymous(HttpMethod.POST, '/api/Account/Login', { username, password});
     }
 }

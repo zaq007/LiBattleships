@@ -25,11 +25,16 @@ namespace LiBattleship.Shared.Infrastructure.Contexts
                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<GameHistory>()
-               .HasOne(x => x.Loser)
+               .HasOne(x => x.Player1)
                .WithMany()
-               .HasForeignKey(x => x.LoserId)
+               .HasForeignKey(x => x.Player1Id)
                .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<GameHistory>()
+               .HasOne(x => x.Player2)
+               .WithMany()
+               .HasForeignKey(x => x.Player2Id)
+               .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }

@@ -10,5 +10,6 @@ namespace LiBattleship.Shared.Models
         public int[][] MyMap { get; set; }
         public int[][] EnemyMap { get; set; }
         public bool IsMyTurn { get; set; }
+        public bool IsFinished { get; set; }
     }
 }

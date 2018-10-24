@@ -14,7 +14,7 @@ namespace LiBattleship.Matchmaking.Infrastructure
             _matches = new List<Match>();
         }
 
-        public Guid CreateMatch(Guid creator, int[][] map)
+        public Guid CreateMatch(Guid creator, Field map)
         {
             var id = Guid.NewGuid();
             _matches.Add(new Match()
@@ -32,7 +32,7 @@ namespace LiBattleship.Matchmaking.Infrastructure
             return _matches.Where(x => x.JoinerMap == null);
         }
 
-        public Match JoinMatch(Guid matchId, Guid joiner, int[][] map)
+        public Match JoinMatch(Guid matchId, Guid joiner, Field map)
         {
             var match = _matches.SingleOrDefault(x => x.Id == matchId);
             if (match.Creator == joiner) return null;

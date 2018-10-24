@@ -16,5 +16,6 @@ namespace LiBattleship.Game.Infrastructure.Models
         public DateTime StartTime { get; set; }
         public DateTime LastMoveTime { get; set; }
         public bool IsFinished { get; set; }
+        public Guid[] Spectators { get; set; }
     }
 }

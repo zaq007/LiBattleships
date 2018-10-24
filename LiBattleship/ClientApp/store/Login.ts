@@ -6,6 +6,7 @@ import { BaseService } from '../services/BaseService';
 
 export interface LoginState {
     token?: JwtToken;
+    isLoggedIn: boolean;
 }
 
 interface RequestTokenAction {
@@ -32,14 +33,17 @@ export const actionCreators = {
 };
 
 
-const unloadedState: LoginState = {};
+const unloadedState: LoginState = { isLoggedIn: false };
 
 export const reducer: Reducer<LoginState> = (state: LoginState, incomingAction: Action) => {
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'RECEIVE_TOKEN':
+            const token = new JwtToken(action.token);
+            console.log(token);
             return Object.assign({}, state, {
-                token: new JwtToken(action.token)
+                token,
+                isLoggedIn: !token.IsGuest
             });
         case 'REQUEST_TOKEN':
             return Object.assign({}, state);

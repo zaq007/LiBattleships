@@ -17,16 +17,20 @@ namespace LiBattleship.Shared.Infrastructure.Models
 
         public IdentityUser<Guid> Winner { get; set; }
 
-        public Guid LoserId { get; set; }
+        public Guid Player1Id { get; set; }
 
-        public IdentityUser<Guid> Loser { get; set; }
+        public IdentityUser<Guid> Player1 { get; set; }
+
+        public Guid Player2Id { get; set; }
+
+        public IdentityUser<Guid> Player2 { get; set; }
 
         public DateTimeOffset StartTime { get; set; }
 
         public DateTimeOffset EndTime { get; set; }
 
-        public string WinnerField { get; set; }
+        public string Player1Field { get; set; }
 
-        public string LoserField { get; set; }
+        public string Player2Field { get; set; }
     }
 }

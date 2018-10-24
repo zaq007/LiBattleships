@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using LiBattleship.Identity;
+using LiBattleship.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -47,12 +48,13 @@ namespace LiBattleship.Controllers
         }
 
         [Route("Login")]
-        public async Task<IActionResult> Login(string userName, string password)
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody]LoginModel model)
         {
-            var user = await _userManager.FindByNameAsync(userName);
+            var user = await _userManager.FindByNameAsync(model.Username);
             if (user != null)
             {
-                if (await _userManager.CheckPasswordAsync(user, password))
+                if (await _userManager.CheckPasswordAsync(user, model.Password))
                 {
                     await _signInManager.SignInAsync(user, false);
                     var claimsPrincipal = await _signInManager.ClaimsFactory.CreateAsync(user);

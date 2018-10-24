@@ -13,17 +13,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Query.Infrastr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Shared.Infrastructure", "LiBattleship.Shared.Infrastructure\LiBattleship.Shared.Infrastructure.csproj", "{5C347A05-4EF3-4AFB-ACDF-467FB7C767F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Matchmaking", "LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj", "{97B3DA27-3EB0-4002-9743-44FBCAD249AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Matchmaking", "LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj", "{97B3DA27-3EB0-4002-9743-44FBCAD249AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Matchmaking.Infrastructure", "LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj", "{89DE95C6-797D-4376-9966-D9EC226DBB51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Matchmaking.Infrastructure", "LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj", "{89DE95C6-797D-4376-9966-D9EC226DBB51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Game", "LiBattleship.Game\LiBattleship.Game.csproj", "{7810AB8D-084E-4D83-B435-54F95BBD7DC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Game", "LiBattleship.Game\LiBattleship.Game.csproj", "{7810AB8D-084E-4D83-B435-54F95BBD7DC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Game.Infrastructure", "LiBattleship.Game.Infrastructure\LiBattleship.Game.Infrastructure.csproj", "{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBattleship.Game.Infrastructure", "LiBattleship.Game.Infrastructure\LiBattleship.Game.Infrastructure.csproj", "{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Matchmaking", "Matchmaking", "{7B7E60E7-3198-47A7-B40B-CC912901C2EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameServer", "GameServer", "{9705711E-8BA0-4E04-924E-95A6F585AA00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Service", "LiBattleship.Service\LiBattleship.Service.csproj", "{F936A19E-4E12-4696-86B7-B3F167FFF06E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Service.Infrastructure", "LiBattleship.Service.Infrastructure\LiBattleship.Service.Infrastructure.csproj", "{1511DD1E-D446-41F1-9D99-C15A11DDEB62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Command", "LiBattleship.Command\LiBattleship.Command.csproj", "{30C418C5-129B-40F8-A733-69BA8019430D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBattleship.Command.Infrastructure", "LiBattleship.Command.Infrastructure\LiBattleship.Command.Infrastructure.csproj", "{E0686386-D525-4C3D-8723-29500D092D36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +75,22 @@ Global
 		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB361FCC-4902-4CA8-9D3F-9C7509CE2336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F936A19E-4E12-4696-86B7-B3F167FFF06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F936A19E-4E12-4696-86B7-B3F167FFF06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F936A19E-4E12-4696-86B7-B3F167FFF06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F936A19E-4E12-4696-86B7-B3F167FFF06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1511DD1E-D446-41F1-9D99-C15A11DDEB62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1511DD1E-D446-41F1-9D99-C15A11DDEB62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1511DD1E-D446-41F1-9D99-C15A11DDEB62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1511DD1E-D446-41F1-9D99-C15A11DDEB62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30C418C5-129B-40F8-A733-69BA8019430D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C418C5-129B-40F8-A733-69BA8019430D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C418C5-129B-40F8-A733-69BA8019430D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C418C5-129B-40F8-A733-69BA8019430D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0686386-D525-4C3D-8723-29500D092D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0686386-D525-4C3D-8723-29500D092D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0686386-D525-4C3D-8723-29500D092D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0686386-D525-4C3D-8723-29500D092D36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

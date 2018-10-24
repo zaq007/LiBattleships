@@ -6,8 +6,8 @@ namespace LiBattleship.Matchmaking
 {
     public interface IMatchmaking
     {
-        Guid CreateMatch(Guid creator, int[][] map);
-        Match JoinMatch(Guid match, Guid joiner, int[][] map);
+        Guid CreateMatch(Guid creator, Field map);
+        Match JoinMatch(Guid match, Guid joiner, Field map);
         IEnumerable<Match> GetAvailableMatches();
     }
 }

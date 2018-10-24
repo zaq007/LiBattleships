@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LiBattleship.Query.Infrastructure
+namespace LiBattleship.Command
 {
-    class DbQuery
+    public interface ICommand
     {
     }
 }

@@ -16,7 +16,9 @@ export class BaseService {
                 "Content-Type": "application/json; charset=utf-8",
             },
             body: JSON.stringify(data),
-        }));
+        })).then((data: Response) => {
+            return data.json();
+        });
     }
 
     public static fetchAnonymous(method: string, url: string, data?: any): Promise<any> {
@@ -26,6 +28,8 @@ export class BaseService {
                 "Content-Type": "application/json; charset=utf-8",
             },
             body: JSON.stringify(data),
+        }).then((data: Response) => {
+            return data.json();
         });
     }
 }
