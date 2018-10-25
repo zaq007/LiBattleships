@@ -28,6 +28,7 @@ export const actionCreators = {
         dispatch({ type: 'SET_GAME_STATE', currentGameMap: state.myMap, enemyGameMap: state.enemyMap, isMyTurn: state.isMyTurn, currentGameId: state.id } as SetGameStateAction);
     },
     setGameState: (state: any): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        console.log(state);
         dispatch({ type: 'SET_GAME_STATE', currentGameMap: state.myMap, enemyGameMap: state.enemyMap, isMyTurn: state.isMyTurn, currentGameId: state.id } as SetGameStateAction);
     }
 };

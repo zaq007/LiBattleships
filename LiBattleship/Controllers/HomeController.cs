@@ -5,17 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using LiBattleship.Command;
 using LiBattleship.Command.Commands.Game;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LiBattleship.Controllers
 {
     public class HomeController : Controller
     {
-        ICommandHandler<GameResultCommand> gameResultHandler;
+        IMediator mediator;
 
-        public HomeController(ICommandHandler<GameResultCommand> gameResultHandler)
+        public HomeController(IMediator mediator)
         {
-            this.gameResultHandler = gameResultHandler;
+            this.mediator = mediator;
         }
 
         public IActionResult Index()
@@ -31,7 +32,7 @@ namespace LiBattleship.Controllers
 
         public IActionResult Test()
         {
-            gameResultHandler.Handle(new GameResultCommand());
+            mediator.Send(new GameResultCommand());
             return Ok();
         }
     }

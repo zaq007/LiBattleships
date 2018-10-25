@@ -1,11 +1,13 @@
-﻿using LiBattleship.Shared.Models;
+﻿using LiBattleship.Command.Models;
+using LiBattleship.Shared.Models;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LiBattleship.Command.Commands.Game
 {
-    public class GameResultCommand: ICommand
+    public class GameResultCommand: IRequest<CommandResult>
     {
         public Guid GameId { get; set; }
 

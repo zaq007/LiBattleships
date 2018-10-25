@@ -1,5 +1,6 @@
 ﻿using LiBattleship.Command.Commands.Game;
 using LiBattleship.Command.Infrastructure.Handlers;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace LiBattleship.Command.Infrastructure.Extensions
     {
         public static void AddCommandHandlers(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<ICommandHandler<GameResultCommand>, GameHandler>();
+            serviceCollection.AddMediatR();
         }
     }
 }

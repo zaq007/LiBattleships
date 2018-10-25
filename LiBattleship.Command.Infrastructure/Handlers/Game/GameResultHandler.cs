@@ -2,23 +2,24 @@
 using LiBattleship.Command.Models;
 using LiBattleship.Shared.Infrastructure.Contexts;
 using LiBattleship.Shared.Infrastructure.Models;
+using MediatR;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace LiBattleship.Command.Infrastructure.Handlers
 {
-    class GameHandler : BaseHandler, ICommandHandler<GameResultCommand>
+    class GameResultHandler : BaseHandler, IRequestHandler<GameResultCommand, CommandResult>
     {
-
-
-        public GameHandler(BattleshipContext context) : base(context)
+        public GameResultHandler(BattleshipContext context) : base(context)
         {
 
         }
 
-        public CommandResult Handle(GameResultCommand command)
+        public Task<CommandResult> Handle(GameResultCommand command, CancellationToken cancellationToken)
         {
             context.GameHistories.Add(new GameHistory
             {
@@ -31,7 +32,8 @@ namespace LiBattleship.Command.Infrastructure.Handlers
                 StartTime = command.StartTime,
                 WinnerId = command.Winner
             });
-            return new CommandResult(context.SaveChanges() > 0, null);
+
+            return Task.FromResult(new CommandResult(context.SaveChanges() > 0, null));
         }
     }
 }

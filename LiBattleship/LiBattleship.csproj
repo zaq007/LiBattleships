@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="5.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
@@ -48,6 +50,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LiBattleship.Command.Infrastructure\LiBattleship.Command.Infrastructure.csproj" />
+    <ProjectReference Include="..\LiBattleship.Command\LiBattleship.Command.csproj" />
     <ProjectReference Include="..\LiBattleship.Game.Infrastructure\LiBattleship.Game.Infrastructure.csproj" />
     <ProjectReference Include="..\LiBattleship.Game\LiBattleship.Game.csproj" />
     <ProjectReference Include="..\LiBattleship.Matchmaking.Infrastructure\LiBattleship.Matchmaking.Infrastructure.csproj" />

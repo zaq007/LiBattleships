@@ -22,11 +22,9 @@ namespace LiBattleship.Controllers
     public class GameController : ControllerBase
     {
         private readonly IGameService gameService;
-        private readonly IHubContext<BattleshipsHub> hub;
 
         public GameController(IGameService gameService, IHubContext<BattleshipsHub> hub)
         {
-            this.hub = hub;
             this.gameService = gameService;
         }
 
@@ -35,7 +33,6 @@ namespace LiBattleship.Controllers
         public IActionResult Create([FromBody] int[][] field)
         {
             gameService.Create(User.GetUserId(), new Field(field));
-            hub.Clients.All.SendAsync("setGameList", gameService.GetAvailableMatches());
             return Ok();
         }
 
@@ -60,7 +57,6 @@ namespace LiBattleship.Controllers
         {
             var game = gameService.Join(id, User.GetUserId(), new Field(field));
             if (game == null) return BadRequest();
-            hub.Clients.User(game.Player1.ToString()).SendAsync("gameCreated", game.ForPlayer(game.Player1));
             return Ok(game.ForPlayer(User.GetUserId()));
         }
 
@@ -72,8 +68,6 @@ namespace LiBattleship.Controllers
             var state = gameService.MakeMove(id, userGuid, x, y);
             if (state != null)
             {
-                var otherPlayer = state.IsP1Turn ? state.Player1 : state.Player2;
-                hub.Clients.User(otherPlayer.ToString()).SendAsync("setGameState", state.ForPlayer(otherPlayer));
                 return Ok(state.ForPlayer(userGuid));
             }
             return Ok(gameService.GetGameState(id).ForPlayer(userGuid));

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using LiBattleship.Command.Infrastructure.Extensions;
@@ -15,6 +16,8 @@ using LiBattleship.Service.Infrastructure.Services;
 using LiBattleship.Service.Services;
 using LiBattleship.Services;
 using LiBattleship.Shared.Infrastructure.Contexts;
+using LiBattleship.Shared.Services;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -83,8 +86,10 @@ namespace LiBattleship
 
             services.AddSingleton<IMatchmaking, Matchmaking.Infrastructure.Matchmaking>();
             services.AddSingleton<IGameServer, GameServer>();
+
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IGameService, GameService>();
+            services.AddScoped<INotificationService, NotificationService>();
 
             services.AddCommandHandlers();
         }
