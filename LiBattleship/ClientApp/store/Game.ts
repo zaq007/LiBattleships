@@ -4,19 +4,20 @@ import { AppThunkAction } from './';
 import { FieldHelper } from '../helpers/FieldHelper';
 import { push, RouterAction } from 'react-router-redux';
 
-export interface GameState {
-    currentGameMap: Array<Array<number>>;
-    enemyGameMap: Array<Array<number>>;
+export interface State {
+    myMap: Array<Array<number>>;
+    enemyMap: Array<Array<number>>;
     isMyTurn: boolean;
-    currentGameId: string;
+    id: string;
+}
+
+export interface GameState {
+    [id: string]: State;
 }
 
 interface SetGameStateAction {
     type: 'SET_GAME_STATE';
-    currentGameMap: Array<Array<number>>;
-    enemyGameMap: Array<Array<number>>;
-    isMyTurn: boolean;
-    currentGameId: string;
+    state: State;
 }
 
 
@@ -24,23 +25,25 @@ type KnownAction = SetGameStateAction | RouterAction;
 
 export const actionCreators = {
     gameCreated: (state: any): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        dispatch({ type: 'SET_GAME_STATE', state } as SetGameStateAction);
         dispatch(push(`/game/${state.id}`));
-        dispatch({ type: 'SET_GAME_STATE', currentGameMap: state.myMap, enemyGameMap: state.enemyMap, isMyTurn: state.isMyTurn, currentGameId: state.id } as SetGameStateAction);
     },
     setGameState: (state: any): AppThunkAction<KnownAction> => (dispatch, getState) => {
-        console.log(state);
-        dispatch({ type: 'SET_GAME_STATE', currentGameMap: state.myMap, enemyGameMap: state.enemyMap, isMyTurn: state.isMyTurn, currentGameId: state.id } as SetGameStateAction);
+        dispatch({ type: 'SET_GAME_STATE', state } as SetGameStateAction);
     }
 };
 
 
-const unloadedState: GameState = { currentGameMap: FieldHelper.getEmptyField(), enemyGameMap: FieldHelper.getEmptyField(), isMyTurn: false, currentGameId: '' };
+const unloadedState: GameState = { };
 
 export const reducer: Reducer<GameState> = (state: GameState, incomingAction: Action) => {
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'SET_GAME_STATE':
-            return Object.assign({}, state, action);
+            const setGameStateAction = action as SetGameStateAction;
+            return Object.assign({}, state, {
+                [setGameStateAction.state.id]: setGameStateAction.state
+            });
     }
 
     return state || unloadedState;

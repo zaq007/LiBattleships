@@ -17,4 +17,8 @@ export class GameService {
     public static MakeMove(gameId: string, x: number, y :number) {
         return BaseService.fetch(HttpMethod.POST, `/api/Game/${gameId}/move/${x}/${y}`);
     }
+
+    public static GetGameState(gameId: string) {
+        return BaseService.fetch(HttpMethod.GET, `/api/Game/${gameId}`);
+    }
 }
