@@ -1,14 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
+    <UserSecretsId>77f3c9b3-73bd-4311-9f59-eb0b3f45ab85</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +22,64 @@
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
     <Content Remove="ClientApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\components\Game.tsx" />
+    <None Remove="ClientApp\components\GameCell.tsx" />
+    <None Remove="ClientApp\components\GameField.tsx" />
+    <None Remove="ClientApp\components\GameList.tsx" />
+    <None Remove="ClientApp\components\JoinGame.tsx" />
+    <None Remove="ClientApp\components\Login.tsx" />
+    <None Remove="ClientApp\components\NewGame.tsx" />
+    <None Remove="ClientApp\components\SignalR.tsx" />
+    <None Remove="ClientApp\helpers\FieldHelper.ts" />
+    <None Remove="ClientApp\helpers\JwtToken.ts" />
+    <None Remove="ClientApp\models\GameListModel.ts" />
+    <None Remove="ClientApp\services\AuthService.ts" />
+    <None Remove="ClientApp\services\BaseService.ts" />
+    <None Remove="ClientApp\services\GameService.ts" />
+    <None Remove="ClientApp\store\Game.ts" />
+    <None Remove="ClientApp\store\GameList.ts" />
+    <None Remove="ClientApp\store\Login.ts" />
+    <None Remove="ClientApp\store\NewGame.ts" />
+    <None Remove="ClientApp\store\Router.ts" />
+    <None Remove="ClientApp\store\SignalR.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiBattleship.Command.Infrastructure\LiBattleship.Command.Infrastructure.csproj" />
+    <ProjectReference Include="..\LiBattleship.Command\LiBattleship.Command.csproj" />
+    <ProjectReference Include="..\LiBattleship.Game.Local\LiBattleship.Game.Local.csproj" />
+    <ProjectReference Include="..\LiBattleship.Game\LiBattleship.Game.csproj" />
+    <ProjectReference Include="..\LiBattleship.Matchmaking.Local\LiBattleship.Matchmaking.Local.csproj" />
+    <ProjectReference Include="..\LiBattleship.Matchmaking\LiBattleship.Matchmaking.csproj" />
+    <ProjectReference Include="..\LiBattleship.Service.Infrastructure\LiBattleship.Service.Infrastructure.csproj" />
+    <ProjectReference Include="..\LiBattleship.Service\LiBattleship.Service.csproj" />
+    <ProjectReference Include="..\LiBattleship.Shared.Infrastructure\LiBattleship.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\Game.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\GameCell.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\GameField.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\GameList.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Login.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\JoinGame.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\NewGame.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\SignalR.tsx" />
+    <TypeScriptCompile Include="ClientApp\helpers\FieldHelper.ts" />
+    <TypeScriptCompile Include="ClientApp\helpers\JwtToken.ts" />
+    <TypeScriptCompile Include="ClientApp\models\GameListModel.ts" />
+    <TypeScriptCompile Include="ClientApp\services\GameService.ts" />
+    <TypeScriptCompile Include="ClientApp\services\AuthService.ts" />
+    <TypeScriptCompile Include="ClientApp\services\BaseService.ts" />
+    <TypeScriptCompile Include="ClientApp\store\GameList.ts" />
+    <TypeScriptCompile Include="ClientApp\store\Game.ts" />
+    <TypeScriptCompile Include="ClientApp\store\NewGame.ts" />
+    <TypeScriptCompile Include="ClientApp\store\Login.ts" />
+    <TypeScriptCompile Include="ClientApp\store\Router.ts" />
+    <TypeScriptCompile Include="ClientApp\store\SignalR.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

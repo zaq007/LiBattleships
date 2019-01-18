@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "devDependencies": {
     "@types/history": "4.6.0",
+    "@types/jwt-decode": "^2.2.1",
     "@types/react": "15.0.35",
     "@types/react-dom": "15.5.1",
     "@types/react-hot-loader": "3.0.3",
@@ -13,11 +14,12 @@
     "@types/react-router-redux": "5.0.3",
     "@types/webpack": "2.2.15",
     "@types/webpack-env": "1.13.0",
+    "@types/bootstrap": "^3.3.38",
     "aspnet-prerendering": "^3.0.1",
     "aspnet-webpack": "^2.0.1",
     "aspnet-webpack-react": "^3.0.0",
     "awesome-typescript-loader": "3.2.1",
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.0",
     "css-loader": "0.28.4",
     "domain-task": "^3.0.3",
     "event-source-polyfill": "0.0.9",
@@ -30,15 +32,20 @@
     "react-dom": "15.6.1",
     "react-hot-loader": "3.0.0-beta.7",
     "react-redux": "5.0.5",
-    "react-router-dom": "4.1.1",
-    "react-router-redux": "5.0.0-alpha.6",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
     "redux": "3.7.1",
     "redux-thunk": "2.2.0",
     "style-loader": "0.18.2",
+    "tslib": "1.9.2",
     "typescript": "2.4.1",
     "url-loader": "0.5.9",
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",
     "webpack-merge": "4.1.0"
+  },
+  "dependencies": {
+    "@aspnet/signalr": "1.0.4",
+    "jwt-decode": "^2.2.0"
   }
 }
