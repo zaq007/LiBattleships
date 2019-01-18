@@ -5,7 +5,7 @@ using LiBattleship.Game.Models;
 using LiBattleship.Shared.Enums;
 using LiBattleship.Shared.Models;
 
-namespace LiBattleship.Game.Infrastructure
+namespace LiBattleship.Game.Local
 {
     public class GameServer : IGameServer
     {

@@ -19,7 +19,7 @@ type SignalRProps =
     & ComponentParams;
 
 class SignalR extends React.Component<SignalRProps, {}> {
-    connection: HubConnection = new HubConnectionBuilder().withUrl("http://localhost:4761/hubs/battleships", {
+    connection: HubConnection = new HubConnectionBuilder().withUrl("http://localhost:9999/hubs/battleships", {
         accessTokenFactory: () => AuthService.getToken(),
     }).build();
 

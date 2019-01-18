@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using LiBattleship.Command.Infrastructure.Extensions;
 using LiBattleship.Game;
-using LiBattleship.Game.Infrastructure;
+using LiBattleship.Game.Local;
 using LiBattleship.Hubs;
 using LiBattleship.Identity;
 using LiBattleship.Matchmaking;
-using LiBattleship.Matchmaking.Infrastructure;
+using LiBattleship.Matchmaking.Local;
 using LiBattleship.Service.Infrastructure.Services;
 using LiBattleship.Service.Services;
 using LiBattleship.Services;
@@ -84,7 +84,7 @@ namespace LiBattleship
             services.AddSignalR(x => x.EnableDetailedErrors = true);
             services.AddMvc();
 
-            services.AddSingleton<IMatchmaking, Matchmaking.Infrastructure.Matchmaking>();
+            services.AddSingleton<IMatchmaking, Matchmaking.Local.Matchmaking>();
             services.AddSingleton<IGameServer, GameServer>();
 
             services.AddScoped<IEmailSender, EmailSender>();

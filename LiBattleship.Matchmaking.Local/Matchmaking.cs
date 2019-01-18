@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LiBattleship.Matchmaking.Infrastructure
+namespace LiBattleship.Matchmaking.Local
 {
     public class Matchmaking : IMatchmaking
     {

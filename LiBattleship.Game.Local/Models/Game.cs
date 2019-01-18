@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LiBattleship.Game.Infrastructure.Models
+namespace LiBattleship.Game.Local.Models
 {
     public class Game
     {
